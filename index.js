@@ -1,16 +1,31 @@
 // Load up the discord.js library
-const Discord = require("discord.js");
+const { Client, Collection } = require("discord.js");
+const stream = require("./streams.json");
+const utils = require("./utils/HitRadioUtils.js");
+const fs = require('fs');
 
-let params, command;
-// This is your client. Some people call it `bot`, some people call it `self`, 
-// some might call it `cootchie`. Either way, when you see `client.something`, or `bot.something`,
-// this is what we're refering to. Your client.
-const client = new Discord.Client();
-
-// Here we load the config.json file that contains our token and our prefix values. 
 const config = require("./config.json");
 // config.token contains the bot's token
 // config.prefix contains the message prefix.
+let _TOKEN, _PREFIX;
+try {
+  _TOKEN = config.token;
+  _PREFIX = config.prefix;
+} catch (error) {
+  console.error("Error :" + JSON.stringify(error));
+  _TOKEN = process.env.token;
+  _PREFIX = process.env.prefix;
+}
+
+
+let command;
+// This is your client. Some people call it `bot`, some people call it `self`, 
+// some might call it `cootchie`. Either way, when you see `client.something`, or `bot.something`,
+// this is what we're refering to. Your client.
+const client = new Client();
+
+// Here we load the config.json file that contains our token and our prefix values. 
+
 
 client.on("ready", () => {
   // This event will run if the bot starts, and logs in, successfully.
@@ -67,14 +82,38 @@ client.on("message", async message => {
   if (command === "play") {
     var voice, player;
     // To join channel
-    client.channels.get("channelid").join()
-      .then((connection) => { voice = connection });
+    // Keep in mind this may be undefined if
+    const voiceChannelID = message.member.voice.channelID;
+    var voiceChannel = message.member.voice.channel;
+
+
+    if (!voiceChannel) {
+      message.reply("You are not in the correct channel.");
+    }
+
+    client.channels.cache.get(voiceChannelID).join()
+      .then((connection) => {
+
+        //voice = connection
+        // Create an instance of a VoiceBroadcast
+        //const broadcast = voice.createBroadcast();
+        const dispatcher = connection.play(stream.url);
+
+        //dispatcher.on("end", end => {VC.leave()});
+
+      }).catch(e => {
+        console.error(e)
+      })
 
     // To stream audio
-    player = voice.playArbitraryInput("https://hitradio-maroc.ice.infomaniak.ch/hitradio-maroc-128.mp3");
+    // player = voice.playArbitraryInput(stream.url);
+
+
+    // Play audio on the broadcast
+    // Play this broadcast across multiple connections (subscribe to the broadcast)
 
     // To stop
-    player.end();
+    // player.end();
   }
 
   if (command === "cls") {

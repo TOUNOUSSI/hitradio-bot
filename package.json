@@ -1,11 +1,11 @@
 {
-  "name": "hitradio-bot",
+  "name": "hitradio",
   "version": "1.0.0",
   "description": "Hit Radio Bot a discord bot to stream the Moroccan Radio 'HIT RADIO'.",
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,9 @@
   },
   "homepage": "https://github.com/TOUNOUSSI/hitradio-bot#readme",
   "dependencies": {
-    "discord.js": "^12.4.1"
+    "@discordjs/opus": "^0.3.3",
+    "discord.js": "^12.4.1",
+    "express": "4.17.1",
+    "ffmpeg-static": "^4.2.7"
   }
 }
