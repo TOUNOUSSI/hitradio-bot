@@ -27,5 +27,9 @@
     "discord.js": "^12.4.1",
     "express": "4.17.1",
     "ffmpeg-static": "^4.2.7"
+  },
+  "engines": {
+    "node": "12.13.0",
+    "npm": "6.12.0"
   }
 }
