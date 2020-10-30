@@ -2,10 +2,10 @@
   "name": "hitradio",
   "version": "1.0.0",
   "description": "Hit Radio Bot a discord bot to stream the Moroccan Radio 'HIT RADIO'.",
-  "main": "index.js",
+  "main": "bot.js",
   "scripts": {
     "test": "test",
-    "start": "node index.js"
+    "start": "node bot.js"
   },
   "repository": {
     "type": "git",

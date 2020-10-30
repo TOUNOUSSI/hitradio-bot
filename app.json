@@ -1,9 +1,11 @@
 {
     "name": "hitradio",
-    "description": "🤖 Discord Music Bot built with discord.js",
-    "repository": "https://github.com/eritislami/evobot",
-    "logo": "https://i.imgur.com/JFxgbWH.png",
+    "description": "Hit Radio Bot a discord bot to stream the Moroccan Radio 'HIT RADIO'.",
+    "repository": "https://github.com/TOUNOUSSI/hitradio-bot.git",
+    "url": "git+https://github.com/TOUNOUSSI/hitradio-bot.git",
+    "logo": "https://github.com/TOUNOUSSI/hitradio-bot/blob/master/assets/HITRADIO_BOT_LOGO.png",
     "keywords": [
+        "hitradio",
         "discord",
         "discordjs",
         "music",
