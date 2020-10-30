@@ -54,13 +54,13 @@ client.on("message", async message => {
 
   // Also good practice to ignore any message that does not start with our prefix, 
   // which is set in the configuration file.
-  if (!message.content.startsWith(config.prefix)) return;
+  if (!message.content.startsWith(_PREFIX)) return;
 
   // Here we separate our "command" name, and our "arguments" for the command. 
   // e.g. if we have the message "+say Is this the real life?" , we'll get the following:
   // command = say
   // args = ["Is", "this", "the", "real", "life?"]
-  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+  const args = message.content.slice(_PREFIX.length).trim().split(/ +/g);
 
   command = args[0];
   args.shift().trim();
