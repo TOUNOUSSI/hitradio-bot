@@ -1,6 +1,5 @@
 // Load up the discord.js library
 const { Client, Collection } = require("discord.js");
-const stream = require("./streams.json");
 const utils = require("./utils/HitRadioUtils.js");
 const fs = require('fs');
 
@@ -99,7 +98,7 @@ client.on("message", async message => {
         //voice = connection
         // Create an instance of a VoiceBroadcast
         //const broadcast = voice.createBroadcast();
-        const dispatcher = connection.play(stream.url);
+        const dispatcher = connection.play(process.env.HITRADIO_STREAM);
 
         //dispatcher.on("end", end => {VC.leave()});
 
