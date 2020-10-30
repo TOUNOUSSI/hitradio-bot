@@ -1,6 +1,5 @@
 // Load up the discord.js library
-const { Client, Collection } = require("discord.js");
-const config = require("./config.json");
+const { Client } = require("discord.js");
 
 // config.token contains the bot's token
 // config.prefix contains the message prefix.
