@@ -9,14 +9,14 @@ const config = require("./config.json");
 // config.prefix contains the message prefix.
 let _TOKEN, _PREFIX;
 try {
-  _TOKEN = process.env.token;
-  _PREFIX = process.env.prefix;
+  _TOKEN = process.env.TOKEN;
+  _PREFIX = process.env.PREFIX;
   console.log("HIT RADIO Prefix loaded from heroku : " + _PREFIX)
 
 } catch (error) {
   console.error("Error :" + JSON.stringify(error));
-  _TOKEN = process.env.token;
-  _PREFIX = process.env.prefix;
+  _TOKEN = process.env.TOKEN;
+  _PREFIX = process.env.PREFIX;
 }
 
 
