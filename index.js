@@ -9,8 +9,10 @@ const config = require("./config.json");
 // config.prefix contains the message prefix.
 let _TOKEN, _PREFIX;
 try {
-  _TOKEN = config.token;
-  _PREFIX = config.prefix;
+  _TOKEN = ENV['TOKEN'];
+  _PREFIX = ENV['PREFIX'];
+  console.log("HIT RADIO Prefix loaded from heroku : " + _PREFIX)
+
 } catch (error) {
   console.error("Error :" + JSON.stringify(error));
   _TOKEN = process.env.token;
@@ -132,4 +134,4 @@ client.on("message", async message => {
   }
 });
 
-client.login(config.token);
+client.login(ENV['TOKEN']);
