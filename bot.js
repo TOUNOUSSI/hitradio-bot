@@ -1,12 +1,11 @@
 // Load up the discord.js library
 const { Client, Collection } = require("discord.js");
-const utils = require("./utils/HitRadioUtils.js");
-const fs = require('fs');
-
 const config = require("./config.json");
+
 // config.token contains the bot's token
 // config.prefix contains the message prefix.
 let _TOKEN, _PREFIX;
+
 try {
   _TOKEN = process.env.TOKEN;
   _PREFIX = process.env.PREFIX;
@@ -24,8 +23,6 @@ let command;
 // some might call it `cootchie`. Either way, when you see `client.something`, or `bot.something`,
 // this is what we're refering to. Your client.
 const client = new Client();
-
-// Here we load the config.json file that contains our token and our prefix values. 
 
 
 client.on("ready", () => {
@@ -76,11 +73,11 @@ client.on("message", async message => {
     // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
     // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
     const m = await message.channel.send("Ping?");
-    m.edit(`Maison-B Ping : ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ws.ping)}ms`);
+    m.edit(`HIT RADIO Ping : ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ws.ping)}ms`);
   }
 
 
-  if (command === "play") {
+  if (command === "join") {
     var voice, player;
     // To join channel
     // Keep in mind this may be undefined if
@@ -96,25 +93,13 @@ client.on("message", async message => {
       .then((connection) => {
 
         //voice = connection
-        // Create an instance of a VoiceBroadcast
-        //const broadcast = voice.createBroadcast();
         const dispatcher = connection.play(process.env.HITRADIO_STREAM);
 
-        //dispatcher.on("end", end => {VC.leave()});
 
       }).catch(e => {
         console.error(e)
       })
 
-    // To stream audio
-    // player = voice.playArbitraryInput(stream.url);
-
-
-    // Play audio on the broadcast
-    // Play this broadcast across multiple connections (subscribe to the broadcast)
-
-    // To stop
-    // player.end();
   }
 
   if (command === "cls") {
